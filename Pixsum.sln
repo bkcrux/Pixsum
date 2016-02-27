@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Data", "Pixsum.Data\Pixsum.Data.csproj", "{279D16A9-61CA-477C-AD94-4C355460545E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.API", "Pixsum.API\Pixsum.API.csproj", "{2D8FF7EE-D994-4991-A7D2-C6318C55D334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Entities", "Pixsum.Entities\Pixsum.Entities.csproj", "{300DF13B-8587-432F-9351-01B20A74217A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Services", "Pixsum.Services\Pixsum.Services.csproj", "{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{279D16A9-61CA-477C-AD94-4C355460545E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279D16A9-61CA-477C-AD94-4C355460545E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279D16A9-61CA-477C-AD94-4C355460545E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279D16A9-61CA-477C-AD94-4C355460545E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8FF7EE-D994-4991-A7D2-C6318C55D334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8FF7EE-D994-4991-A7D2-C6318C55D334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8FF7EE-D994-4991-A7D2-C6318C55D334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8FF7EE-D994-4991-A7D2-C6318C55D334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{300DF13B-8587-432F-9351-01B20A74217A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300DF13B-8587-432F-9351-01B20A74217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300DF13B-8587-432F-9351-01B20A74217A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300DF13B-8587-432F-9351-01B20A74217A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
