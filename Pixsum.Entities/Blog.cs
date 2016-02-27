@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Pixsum.Entities 
 
 {
-    public class Blog : IEntityBase
+    public class Blog : IEntityBase, IEntityAuditable
     {
         public Blog()
         {

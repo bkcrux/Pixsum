@@ -47,6 +47,7 @@
     <Compile Include="BlogComment.cs" />
     <Compile Include="BlogContent.cs" />
     <Compile Include="BlogUser.cs" />
+    <Compile Include="IEntityAuditable.cs" />
     <Compile Include="IEntityBase.cs" />
     <Compile Include="Picklists\IPickList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

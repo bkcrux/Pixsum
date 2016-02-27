@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Entities
 {
-    public class BlogContentComment : IEntityBase
+    public class BlogContentComment : IEntityBase, IEntityAuditable
     {
         public int Id { get; set; }
         public int AccountId { get; set; }
