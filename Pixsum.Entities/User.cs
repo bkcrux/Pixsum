@@ -14,12 +14,12 @@ namespace Pixsum.Entities
         public string Email { get; set; }
         public string HashedPassword { get; set; }
         public string Salt { get; set; }
-        public string IsLocked { get; set; }
+        public bool IsLocked { get; set; }
         public DateTime LastLoginDate { get; set; }
         public int CreatedUserId { get; set; }
         public int UpdatedUserId { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
     }
 }

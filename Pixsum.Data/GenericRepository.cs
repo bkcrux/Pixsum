@@ -18,7 +18,7 @@ namespace Pixsum.Data
             _dbSet = context.Set<TEntity>();
         }
 
-        public virtual IEnumerable<TEntity> GetByID(object id)
+        public virtual TEntity GetByID(object id)
         {
             return _dbSet.Find(id);
         }

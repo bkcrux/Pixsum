@@ -4,15 +4,32 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{279D16A9-61CA-477C-AD94-4C355460545E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pixsum.Data</RootNamespace>
-    <AssemblyName>Pixsum.Data</AssemblyName>
+    <RootNamespace>TestTheDB</RootNamespace>
+    <AssemblyName>TestTheDB</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,34 +67,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="IGenericRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="PixsumContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SQLScripts\1.dbo.Blog.sql" />
-    <Content Include="SQLScripts\10.dbo.BlogContentComment.sql" />
-    <Content Include="SQLScripts\2.dbo.BlogContent.sql" />
-    <Content Include="SQLScripts\3.dbo.PL_FileType.sql" />
-    <Content Include="SQLScripts\4.dbo.PL_FileStorageService.sql" />
-    <Content Include="SQLScripts\5.dbo.Account.sql" />
-    <Content Include="SQLScripts\6.dbo.User.sql" />
-    <Content Include="SQLScripts\7.dbo.AccountUser.sql" />
-    <Content Include="SQLScripts\8.dbo.BlogUser.sql" />
-    <Content Include="SQLScripts\9.dbo.BlogComment.sql" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Pixsum.Data\Pixsum.Data.csproj">
+      <Project>{279d16a9-61ca-477c-ad94-4c355460545e}</Project>
+      <Name>Pixsum.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pixsum.Entities\Pixsum.Entities.csproj">
       <Project>{300df13b-8587-432f-9351-01b20a74217a}</Project>
       <Name>Pixsum.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

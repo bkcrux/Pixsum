@@ -10,8 +10,8 @@ namespace Pixsum.Entities
     {
         int CreatedUserId { get; set; }
         int UpdatedUserId { get; set; }
-        DateTime CreatedDate { get; set; }
-        DateTime UpdatedDate { get; set; }
+        DateTime? CreatedDate { get; set; }
+        DateTime? UpdatedDate { get; set; }
 
     }
 }

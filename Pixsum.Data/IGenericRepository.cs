@@ -8,7 +8,7 @@ namespace Pixsum.Data
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
-        IEnumerable<TEntity> GetByID(object id);
+        TEntity GetByID(object id);
         void Add(TEntity entity);
         void Update(TEntity entityToUpdate);
         void Delete(object id);
