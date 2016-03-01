@@ -1,7 +1,9 @@
 ﻿using Pixsum.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
@@ -31,14 +33,28 @@ namespace Pixsum.Data
         {
             //Need to remove the pluralizing convention, otherwise EF will try to select from 'Accounts' instead of the real table name which is 'Account'
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //TODO make all the date defaults computed - so GETUTCDATE() in the db is called if no value is passed through
-            //DatabaseGeneratedOption.Computed
-
-            //TODO - set default of all dates in DB to GETUTCDATE()
         }
 
+        public override int SaveChanges()
+        {
+            DateTime saveTime = DateTime.UtcNow;
+            foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added))
+            {
+                if (entry.Property("CreatedDate").CurrentValue == null)
+                    entry.Property("CreatedDate").CurrentValue = saveTime;
 
+                if (entry.Property("UpdatedDate").CurrentValue == null)
+                    entry.Property("UpdatedDate").CurrentValue = saveTime;
+            }
+
+            foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Modified))
+            {
+                if (entry.Property("UpdatedDate").CurrentValue == null)
+                    entry.Property("UpdatedDate").CurrentValue = saveTime;
+            }
+
+            return base.SaveChanges();
+        }
 
     }
 }

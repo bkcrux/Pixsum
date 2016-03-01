@@ -6,9 +6,9 @@
     [HashedPassword] NVARCHAR (500) NOT NULL,
     [Salt]           NVARCHAR (500) NOT NULL,
     [IsLocked]       BIT            NOT NULL,
-    [LastLoginDate]  DATETIME2       NOT NULL,
-    [CreatedDate]    DATETIME2       DEFAULT (getdate()) NOT NULL,
-    [UpdatedDate]    DATETIME2       DEFAULT (getdate()) NOT NULL,
+    [LastLoginDate]  DATETIME2 (7)  NOT NULL,
+    [CreatedDate]    DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
+    [UpdatedDate]    DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
     [CreatedUserId]  INT            NOT NULL,
     [UpdatedUserId]  INT            NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)

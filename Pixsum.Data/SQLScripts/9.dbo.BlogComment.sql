@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[BlogComment] (
-    [Id]            INT            NOT NULL IDENTITY (1, 1),
+    [Id]            INT            IDENTITY (1, 1) NOT NULL,
     [AccountId]     INT            NOT NULL,
     [BlogId]        INT            NOT NULL,
     [Comment]       NVARCHAR (MAX) NOT NULL,
-    [CreatedDate]   DATETIME       DEFAULT (getdate()) NOT NULL,
-    [UpdatedDate]   DATETIME       DEFAULT (getdate()) NOT NULL,
+    [CreatedDate]   DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
+    [UpdatedDate]   DATETIME2 (7)  DEFAULT (getutcdate()) NOT NULL,
     [CreatedUserId] INT            NOT NULL,
     [UpdatedUserId] INT            NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),

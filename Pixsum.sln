@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Entities", "Pixsum.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Services", "Pixsum.Services\Pixsum.Services.csproj", "{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTheDB", "TestTheDB\TestTheDB.csproj", "{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10014906-5DFC-4359-BB0F-C0F93FFA0E1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D5F0449-EBDC-44AD-AE49-BCE3FAE03585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
