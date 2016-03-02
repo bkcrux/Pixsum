@@ -16,7 +16,7 @@ namespace UnitTest
             UnitOfWork uow = new UnitOfWork();
 
             Account a = new Account();
-            a.AccountName = RandomString(10, false);
+            a.AccountName = TestUtilities.RandomString(10, false);
             a.SubDomain = a.AccountName.ToLower();
             uow.AccountRepository.Add(a);
             uow.Save();
@@ -26,25 +26,21 @@ namespace UnitTest
             
         }
 
-        // <summary>
-        /// Generates a random string with the given length
-        /// </summary>
-        /// <param name="size">Size of the string</param>
-        /// <param name="lowerCase">If true, generate lowercase string</param>
-        /// <returns>Random string</returns>
-        private string RandomString(int size, bool lowerCase)
-        { 
-            StringBuilder builder = new StringBuilder();
-            Random random = new Random();
-            char ch;
-            for (int i = 0; i < size; i++)
+        [TestMethod]
+        public void ListAccount()
+        {
+
+            UnitOfWork uow = new UnitOfWork();
+
+            var accounts = uow.AccountRepository.Get();
+            foreach (var a in accounts)
             {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
+                System.Diagnostics.Debug.WriteLine(a.AccountName);
             }
-            if (lowerCase)
-                return builder.ToString().ToLower();
-            return builder.ToString();
+
+            //Assert.AreEqual(b.AccountName, a.AccountName);
+
         }
+
     }
 }
