@@ -13,36 +13,42 @@ namespace UnitTest
         [TestMethod]
         public void CreateAccount()
         {
+            using (var db = new DbFactory())
+            {
+                var accRepo = new GenericRepository<Account>(db);
+                var uow = new UnitOfWork(db);
 
-            UnitOfWork uow = new UnitOfWork();
+                Account a = new Account();
+                a.AccountName = TestUtilities.RandomString(10, false);
+                a.SubDomain = a.AccountName.ToLower();
+                accRepo.Add(a);
+                uow.Save();
 
-            Account a = new Account();
-            a.AccountName = TestUtilities.RandomString(10, false);
-            a.SubDomain = a.AccountName.ToLower();
-            uow.AccountRepository.Add(a);
-            uow.Save();
+                Account b = accRepo.GetByID(a.Id);
+                Assert.AreEqual(b.AccountName, a.AccountName);
+            }
 
-            Account b = uow.AccountRepository.GetByID(a.Id);
-            Assert.AreEqual(b.AccountName, a.AccountName);
-            
         }
 
         [TestMethod]
         public void ListAccount()
         {
 
-            UnitOfWork uow = new UnitOfWork();
-
-            //var accounts = uow.AccountRepository.Get(null, q => q.OrderBy(a => a.UpdatedDate));
-            var accounts = uow.AccountRepository.Get(filter: q => q.AccountName.Contains("cc"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
-
-
-            foreach (var a in accounts)
+            using (var db = new DbFactory())
             {
-                System.Diagnostics.Debug.WriteLine(a.AccountName + " " + a.UpdatedDate);
-            }
+                var accRepo = new GenericRepository<Account>(db);
+                var uow = new UnitOfWork(db);
 
-            //Assert.AreEqual(b.AccountName, a.AccountName);
+                var accounts = accRepo.Get(orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
+                //var accounts = accRepo.Get(filter: q => q.AccountName.Contains("cc"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
+
+                foreach (var a in accounts)
+                {
+                    System.Diagnostics.Debug.WriteLine(a.AccountName + " " + a.UpdatedDate);
+                }
+
+
+            }
 
         }
 

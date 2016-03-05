@@ -11,12 +11,21 @@ namespace Pixsum.Data
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class 
     {
         internal PixsumContext _context;
-        internal DbSet<TEntity> _dbSet;
 
-        public GenericRepository(PixsumContext context)
+        protected IDbFactory DbFactory
         {
-            _context = context;
-            _dbSet = context.Set<TEntity>();
+            get;
+            private set;
+        }
+
+        protected PixsumContext DbContext
+        {
+            get { return _context ?? (_context = DbFactory.Initialize()); }
+        }
+
+        public GenericRepository(IDbFactory factory)
+        {
+            DbFactory = factory;
         }
 
         public virtual IEnumerable<TEntity> Get(
@@ -24,7 +33,7 @@ namespace Pixsum.Data
                 Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
                 string includeProperties = "")
         {
-            IQueryable<TEntity> query = _dbSet;
+            IQueryable<TEntity> query = DbContext.Set<TEntity>();
 
             if (filter != null)
             {
@@ -49,33 +58,33 @@ namespace Pixsum.Data
 
         public virtual TEntity GetByID(object id)
         {
-            return _dbSet.Find(id);
+            return DbContext.Set<TEntity>().Find(id);
         }
 
         public virtual void Add(TEntity entity)
         {
-            _dbSet.Add(entity);
+            DbContext.Set<TEntity>().Add(entity);
         }
 
         public virtual void Update(TEntity entityToUpdate)
         {
-            _dbSet.Attach(entityToUpdate);
-            _context.Entry(entityToUpdate).State = EntityState.Modified;
+            DbContext.Set<TEntity>().Attach(entityToUpdate);
+            DbContext.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = _dbSet.Find(id);
+            TEntity entityToDelete = DbContext.Set<TEntity>().Find(id);
             Delete(entityToDelete);
         }
 
         public virtual void Delete(TEntity entityToDelete)
         {
-            if (_context.Entry(entityToDelete).State == EntityState.Detached)
+            if (DbContext.Entry(entityToDelete).State == EntityState.Detached)
             {
-                _dbSet.Attach(entityToDelete);
+                DbContext.Set<TEntity>().Attach(entityToDelete);
             }
-            _dbSet.Remove(entityToDelete);
+            DbContext.Set<TEntity>().Remove(entityToDelete);
         }
     }
 }

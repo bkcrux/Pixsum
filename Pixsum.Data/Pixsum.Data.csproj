@@ -49,7 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbFactory.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="IDbFactory.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="PixsumContext.cs" />

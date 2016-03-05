@@ -17,16 +17,21 @@ namespace Pixsum.Data
         {
             //This initilizer needs to be called in order for the OnModelCreating handler to fire
             Database.SetInitializer<PixsumContext>(null);
+
+#if DEBUG
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+#endif
+
         }
 
-        public DbSet<Account> AccountSet { get; set; }
-        public DbSet<AccountUser> AccountUserSet { get; set; }
-        public DbSet<Blog> BlogSet { get; set; }
-        public DbSet<BlogComment> BlogCommentSet { get; set; }
-        public DbSet<BlogContent> BlogContentSet { get; set; }
-        public DbSet<BlogContentComment> BlogContentCommentSet { get; set; }
-        public DbSet<BlogUser> BlogUserSet { get; set; }
-        public DbSet<User> UserSet { get; set; }
+        public IDbSet<Account> AccountSet { get; set; }
+        public IDbSet<AccountUser> AccountUserSet { get; set; }
+        public IDbSet<Blog> BlogSet { get; set; }
+        public IDbSet<BlogComment> BlogCommentSet { get; set; }
+        public IDbSet<BlogContent> BlogContentSet { get; set; }
+        public IDbSet<BlogContentComment> BlogContentCommentSet { get; set; }
+        public IDbSet<BlogUser> BlogUserSet { get; set; }
+        public IDbSet<User> UserSet { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
