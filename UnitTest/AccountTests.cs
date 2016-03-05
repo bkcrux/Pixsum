@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pixsum.Data;
 using Pixsum.Entities;
 using System.Text;
+using System.Linq;
 
 namespace UnitTest
 {
@@ -32,10 +33,13 @@ namespace UnitTest
 
             UnitOfWork uow = new UnitOfWork();
 
-            var accounts = uow.AccountRepository.Get();
+            //var accounts = uow.AccountRepository.Get(null, q => q.OrderBy(a => a.UpdatedDate));
+            var accounts = uow.AccountRepository.Get(filter: q => q.AccountName.Contains("cc"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
+
+
             foreach (var a in accounts)
             {
-                System.Diagnostics.Debug.WriteLine(a.AccountName);
+                System.Diagnostics.Debug.WriteLine(a.AccountName + " " + a.UpdatedDate);
             }
 
             //Assert.AreEqual(b.AccountName, a.AccountName);

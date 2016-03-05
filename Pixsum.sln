@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Services", "Pixsum.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pixsum.Logic", "Pixsum.Logic\Pixsum.Logic.csproj", "{646DF5DD-F36D-4506-9629-5E38D411C7AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDC692B4-EEAE-43BB-8828-6CD4FDBC5FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{646DF5DD-F36D-4506-9629-5E38D411C7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{646DF5DD-F36D-4506-9629-5E38D411C7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{646DF5DD-F36D-4506-9629-5E38D411C7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{646DF5DD-F36D-4506-9629-5E38D411C7AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
