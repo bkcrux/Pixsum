@@ -1,4 +1,5 @@
 ﻿using Pixsum.Data;
+using Pixsum.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +8,34 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Logic
 {
-    public class LogicBase<T>
+    public class AccountLogic
     {
-
         private IUnitOfWork _uow;
+        private IGenericRepository<Account> _accountRepo;
 
-        public LogicBase(IUnitOfWork unitOfWork)
+
+        public AccountLogic(IUnitOfWork unitOfWork,
+            IGenericRepository<Account> accountRepo)
         {
-            //Set the passed in DAL (db context) UnitOfWork
             _uow = unitOfWork;
+            _accountRepo = accountRepo;
+        }
+
+        public virtual IEnumerable<Account> GetAccountsWithAnX()
+        {
+            return _accountRepo.Get(filter: q => q.AccountName.Contains("X"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
         }
 
 
+        #region CRUD
         //CRUD
-        //Cascading deletes?  Handle in processors?
-        public virtual void Create(T entity)
+        public virtual Account GetByID(object id)
+        {
+            return _accountRepo.GetByID(id);
+        }
+
+
+        public virtual void Create(Account entity)
         {
             //check security
 
@@ -29,13 +43,17 @@ namespace Pixsum.Logic
 
             //validate
 
-            //call context/session/repo to create a new object
-            //_uow.AccountRepository.Add(entity);
-            //_uow.Save();
+            //call repo to create a new object
+            _accountRepo.Add(entity);
+            //call unit of work to commit changes
+            _uow.Save();
 
             //run after processors
 
         }
+
+
+        //Cascading deletes?  Handle in processors?
 
         //Validation (BRs) - is this getting overkill?
 
@@ -49,7 +67,8 @@ namespace Pixsum.Logic
         //Security by Object/Role in account
 
         //Caching - future phase
-
-
     }
+
+    #endregion
+    
 }

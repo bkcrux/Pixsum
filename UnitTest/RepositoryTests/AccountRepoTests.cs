@@ -5,10 +5,10 @@ using Pixsum.Entities;
 using System.Text;
 using System.Linq;
 
-namespace UnitTest
+namespace UnitTest.RepositoryTests
 {
     [TestClass]
-    public class AccountTests
+    public class AccountRepoTests
     {
         [TestMethod]
         public void CreateAccount()

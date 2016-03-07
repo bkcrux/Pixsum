@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pixsum.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Data
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class 
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IEntityBase
     {
-        internal PixsumContext _context;
+        internal PixsumContext _dbcontext;
 
         protected IDbFactory DbFactory
         {
@@ -20,7 +21,7 @@ namespace Pixsum.Data
 
         protected PixsumContext DbContext
         {
-            get { return _context ?? (_context = DbFactory.Initialize()); }
+            get { return _dbcontext ?? (_dbcontext = DbFactory.Initialize()); }
         }
 
         public GenericRepository(IDbFactory factory)

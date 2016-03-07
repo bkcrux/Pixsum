@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogicBase.cs" />
+    <Compile Include="AccountLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pixsum.Data\Pixsum.Data.csproj">
       <Project>{279d16a9-61ca-477c-ad94-4c355460545e}</Project>
       <Name>Pixsum.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Entities\Pixsum.Entities.csproj">
+      <Project>{300df13b-8587-432f-9351-01b20a74217a}</Project>
+      <Name>Pixsum.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

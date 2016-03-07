@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pixsum.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Data
 {
-    public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository<TEntity> where TEntity : class, IEntityBase
     {
         TEntity GetByID(object id);
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
