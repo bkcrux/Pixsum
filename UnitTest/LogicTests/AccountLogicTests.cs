@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Pixsum.Data;
 using Pixsum.Entities;
 using Pixsum.Logic;
+using System.Linq;
 
 namespace UnitTest.LogicTests
 {
@@ -32,7 +33,7 @@ namespace UnitTest.LogicTests
         }
 
         [TestMethod]
-        public void ListXAccounts()
+        public void ListAccounts()
         {
             using (var db = new DbFactory())
             {
@@ -40,7 +41,7 @@ namespace UnitTest.LogicTests
                 var accRepo = new GenericRepository<Account>(db);
 
                 var al = new AccountLogic(uow, accRepo);
-                foreach (Account a in al.GetAccountsWithAnX())
+                foreach (Account a in al.Get(filter: q => q.AccountName.Contains("cc"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate)))
                 {
                     System.Diagnostics.Debug.WriteLine(a.AccountName + " " + a.UpdatedDate);
                 }

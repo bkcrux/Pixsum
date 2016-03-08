@@ -1,14 +1,16 @@
 ﻿using Pixsum.Data;
 using Pixsum.Entities;
+using Pixsum.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pixsum.Logic
+namespace Pixsum.Logic.Implementations
 {
-    public class AccountLogic
+    public class AccountLogic : IAccountLogic
     {
         private IUnitOfWork _uow;
         private IGenericRepository<Account> _accountRepo;
@@ -21,21 +23,34 @@ namespace Pixsum.Logic
             _accountRepo = accountRepo;
         }
 
+        #region Special Methods
         public virtual IEnumerable<Account> GetAccountsWithAnX()
         {
             return _accountRepo.Get(filter: q => q.AccountName.Contains("X"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
         }
+        #endregion
 
 
         #region CRUD
         //CRUD
+        public virtual IEnumerable<Account> Get(
+                Expression<Func<Account, bool>> filter = null,
+                Func<IQueryable<Account>, IOrderedQueryable<Account>> orderBy = null,
+                string includeProperties = "")
+        {
+            //passthrough to repo
+            return _accountRepo.Get(filter, orderBy, includeProperties);
+        }
+
+
         public virtual Account GetByID(object id)
         {
+            //passthrough to repo
             return _accountRepo.GetByID(id);
         }
 
 
-        public virtual void Create(Account entity)
+        public virtual void Add(Account entity)
         {
             //check security
 
@@ -52,7 +67,29 @@ namespace Pixsum.Logic
 
         }
 
+        public virtual void Update(Account entityToUpdate)
+        {
+            //passthrough to repo
+            _accountRepo.Update(entityToUpdate);
+        }
 
+
+        public virtual void Delete(object id)
+        {
+            //passthrough to repo
+            _accountRepo.Delete(id);
+        }
+
+        public virtual void Delete(Account entityToDelete)
+        {
+            //passthrough to repo
+            _accountRepo.Delete(entityToDelete);
+        }
+
+
+        
+        
+        //TODO
         //Cascading deletes?  Handle in processors?
 
         //Validation (BRs) - is this getting overkill?
@@ -70,5 +107,5 @@ namespace Pixsum.Logic
     }
 
     #endregion
-    
+
 }

@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pixsum.Entities\Pixsum.Entities.csproj">
+      <Project>{300df13b-8587-432f-9351-01b20a74217a}</Project>
+      <Name>Pixsum.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Logic\Pixsum.Logic.csproj">
+      <Project>{646df5dd-f36d-4506-9629-5e38d411c7ab}</Project>
+      <Name>Pixsum.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
