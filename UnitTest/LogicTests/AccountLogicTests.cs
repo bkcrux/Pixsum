@@ -4,6 +4,7 @@ using Pixsum.Data;
 using Pixsum.Entities;
 using Pixsum.Logic;
 using System.Linq;
+using Pixsum.Entities.Interfaces;
 
 namespace UnitTest.LogicTests
 {
@@ -18,12 +19,12 @@ namespace UnitTest.LogicTests
                 var uow = new UnitOfWork(db);
                 var repo = new GenericRepository<Account>(db);
 
-                var al = new AccountLogic(uow, repo);
+                var al = new AccountLogic<Account>(uow, repo);
 
                 Account a = new Account();
                 a.AccountName = TestUtilities.RandomString(10, false);
                 a.SubDomain = a.AccountName.ToLower();
-                al.Create(a);
+                al.Add(a);
 
                 Account b = al.GetByID(a.Id);
                 Assert.AreEqual(b.AccountName, a.AccountName);
@@ -40,7 +41,7 @@ namespace UnitTest.LogicTests
                 var uow = new UnitOfWork(db);
                 var accRepo = new GenericRepository<Account>(db);
 
-                var al = new AccountLogic(uow, accRepo);
+                var al = new AccountLogic<Account>(uow, accRepo);
                 foreach (Account a in al.Get(filter: q => q.AccountName.Contains("cc"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate)))
                 {
                     System.Diagnostics.Debug.WriteLine(a.AccountName + " " + a.UpdatedDate);

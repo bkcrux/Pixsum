@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pixsum.Data
+namespace Pixsum.Data.Interfaces
 {
  
    public interface IUnitOfWork 

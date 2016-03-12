@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Entities
 {
-    interface IEntityAuditable
+    public interface IEntityAuditable
     {
         int CreatedUserId { get; set; }
         int UpdatedUserId { get; set; }

@@ -11,6 +11,7 @@ namespace Pixsum.Services
     //Orchestration of bulk operations or complex business requirements
     //Database transactions captures at the service level
     //Deferred operations that are pushed to a queue or message bus such as emails, activities, logs, etc
+    //Translates between Models and Entities
 
     public class AccountService
     {
@@ -20,6 +21,27 @@ namespace Pixsum.Services
         {
             _accountLogic = al;
         }
+
+        void GetAccount()
+        { }
+
+        void GetAccountsForUser()
+        { }
+
+        void GetUsersOnAccount()
+        { }
+
+        void CreateNewAccountForBrandNewUser()
+        { }
+
+        void UpdateAccount()
+        { }
+
+        void DeactivateAccount()
+        { }
+
+
+
 
 
     }

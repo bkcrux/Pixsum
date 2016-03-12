@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pixsum.Data
+namespace Pixsum.Data.Interfaces
 {
     public interface IGenericRepository<TEntity> where TEntity : class, IEntityBase
     {

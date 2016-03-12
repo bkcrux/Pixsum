@@ -1,4 +1,5 @@
 ﻿using Pixsum.Data;
+using Pixsum.Data.Interfaces;
 using Pixsum.Entities;
 using Pixsum.Logic.Interfaces;
 using System;
@@ -8,49 +9,38 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pixsum.Logic.Implementations
+namespace Pixsum.Logic
 {
-    public class AccountLogic : IAccountLogic
+    public class LogicBase<TEntity> : ILogicBase<TEntity> where TEntity : class, IEntityBase
     {
+
+        private IGenericRepository<TEntity> _repo;
         private IUnitOfWork _uow;
-        private IGenericRepository<Account> _accountRepo;
 
-
-        public AccountLogic(IUnitOfWork unitOfWork,
-            IGenericRepository<Account> accountRepo)
+        public LogicBase(IUnitOfWork uow, IGenericRepository<TEntity> repo)
         {
-            _uow = unitOfWork;
-            _accountRepo = accountRepo;
+            _repo = repo;
+            _uow = uow;
         }
 
-        #region Special Methods
-        public virtual IEnumerable<Account> GetAccountsWithAnX()
+
+        public virtual TEntity GetByID(object id)
         {
-            return _accountRepo.Get(filter: q => q.AccountName.Contains("X"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
+            //passthrough to repo
+            return _repo.GetByID(id);
         }
-        #endregion
 
-
-        #region CRUD
-        //CRUD
-        public virtual IEnumerable<Account> Get(
-                Expression<Func<Account, bool>> filter = null,
-                Func<IQueryable<Account>, IOrderedQueryable<Account>> orderBy = null,
+        public virtual IEnumerable<TEntity> Get(
+                Expression<Func<TEntity, bool>> filter = null,
+                Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
                 string includeProperties = "")
         {
             //passthrough to repo
-            return _accountRepo.Get(filter, orderBy, includeProperties);
+            return _repo.Get(filter, orderBy, includeProperties);
         }
 
 
-        public virtual Account GetByID(object id)
-        {
-            //passthrough to repo
-            return _accountRepo.GetByID(id);
-        }
-
-
-        public virtual void Add(Account entity)
+        public virtual void Add(TEntity entity)
         {
             //check security
 
@@ -59,7 +49,7 @@ namespace Pixsum.Logic.Implementations
             //validate
 
             //call repo to create a new object
-            _accountRepo.Add(entity);
+            _repo.Add(entity);
             //call unit of work to commit changes
             _uow.Save();
 
@@ -67,28 +57,27 @@ namespace Pixsum.Logic.Implementations
 
         }
 
-        public virtual void Update(Account entityToUpdate)
+
+        public virtual void Update(TEntity entityToUpdate)
         {
             //passthrough to repo
-            _accountRepo.Update(entityToUpdate);
+            _repo.Update(entityToUpdate);
         }
 
 
         public virtual void Delete(object id)
         {
             //passthrough to repo
-            _accountRepo.Delete(id);
+            _repo.Delete(id);
         }
 
-        public virtual void Delete(Account entityToDelete)
+        public virtual void Delete(TEntity entityToDelete)
         {
             //passthrough to repo
-            _accountRepo.Delete(entityToDelete);
+            _repo.Delete(entityToDelete);
         }
 
 
-        
-        
         //TODO
         //Cascading deletes?  Handle in processors?
 
@@ -104,8 +93,6 @@ namespace Pixsum.Logic.Implementations
         //Security by Object/Role in account
 
         //Caching - future phase
+
     }
-
-    #endregion
-
 }

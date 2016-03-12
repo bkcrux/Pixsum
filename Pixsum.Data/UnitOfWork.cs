@@ -1,4 +1,5 @@
-﻿using Pixsum.Entities;
+﻿using Pixsum.Data.Interfaces;
+using Pixsum.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
