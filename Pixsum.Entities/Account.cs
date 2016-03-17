@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Entities
 {
-    public class Account : IEntityBase, IEntityAuditable, IAccount
+    public class Account : IEntityBase, IEntityAuditable
     {
         public int Id { get; set; }
 

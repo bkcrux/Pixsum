@@ -1,6 +1,7 @@
 ﻿using Pixsum.Data;
 using Pixsum.Data.Interfaces;
 using Pixsum.Entities;
+using Pixsum.Entities.Interfaces;
 using Pixsum.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
