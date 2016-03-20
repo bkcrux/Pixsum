@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Pixsum.Logic
 {
-    public class AccountLogic<TEntity> : LogicBase<Account> where TEntity : class, IEntityBase
+    public class AccountLogic<TEntity> : LogicBase<Account>, IAccountLogic<TEntity> where TEntity : class, IEntityBase
     {
         private IUnitOfWork _uow;
         private IGenericRepository<Account> _accountRepo;

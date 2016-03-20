@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountUserLogic.cs" />
+    <Compile Include="Interfaces\IAccountLogic.cs" />
     <Compile Include="Interfaces\ILogicBase.cs" />
     <Compile Include="AccountLogic.cs" />
-    <Compile Include="Interfaces\IAccountLogic.cs" />
     <Compile Include="LogicBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

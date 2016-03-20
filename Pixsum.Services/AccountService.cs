@@ -1,4 +1,5 @@
 ﻿using Pixsum.Entities;
+using Pixsum.Logic;
 using Pixsum.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,14 @@ namespace Pixsum.Services
 
     public class AccountService
     {
-        private IAccountLogic _logic;
+        private IAccountLogic<Account> _logic;
         
-        public AccountService(IAccountLogic logic)
+        public AccountService(IAccountLogic<Account> logic)
         {
             _logic = logic;
         }
 
-        Account GetAccount(object id)
+        public Account GetAccount(object id)
         {
             return _logic.GetByID(id);
         }

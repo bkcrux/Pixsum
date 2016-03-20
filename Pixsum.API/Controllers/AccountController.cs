@@ -49,6 +49,10 @@ namespace Pixsum.API.Controllers
             }
         }
 
+
+        //public 
+
+
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo

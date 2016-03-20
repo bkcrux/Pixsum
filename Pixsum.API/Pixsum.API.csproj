@@ -278,7 +278,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Pixsum.Data\Pixsum.Data.csproj">
+      <Project>{279d16a9-61ca-477c-ad94-4c355460545e}</Project>
+      <Name>Pixsum.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Entities\Pixsum.Entities.csproj">
+      <Project>{300df13b-8587-432f-9351-01b20a74217a}</Project>
+      <Name>Pixsum.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Logic\Pixsum.Logic.csproj">
+      <Project>{646df5dd-f36d-4506-9629-5e38d411c7ab}</Project>
+      <Name>Pixsum.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Services\Pixsum.Services.csproj">
+      <Project>{10014906-5dfc-4359-bb0f-c0f93ffa0e1b}</Project>
+      <Name>Pixsum.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
