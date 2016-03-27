@@ -9,9 +9,6 @@ namespace Pixsum.API
 {
     public static class WebApiConfig
     {
-
-        public static IMapper mapo { get; set; }
-
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -29,15 +26,6 @@ namespace Pixsum.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            var automapperconfig = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<DomainToAPIModelMappingProfile>();
-                //cfg.CreateMap<Order, OrderEditViewModel>();
-            });
-
-            mapo = automapperconfig.CreateMapper();
-
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Pixsum.Entities;
 using Pixsum.Logic;
 using Pixsum.Logic.Interfaces;
+using Pixsum.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Pixsum.Services
     //Deferred operations that are pushed to a queue or message bus such as emails, activities, logs, etc
     //Translates between Models and Entities
 
-    public class AccountService
+    public class AccountService : IAccountService
     {
         private IAccountLogic<Account> _logic;
         
@@ -29,25 +30,22 @@ namespace Pixsum.Services
             return _logic.GetByID(id);
         }
 
-        ICollection<Account> GetAccountsForUser()
+        public ICollection<Account> GetAccountsForUser()
         {
             return null;
         }
 
-        void GetUsersOnAccount()
+        public void GetUsersOnAccount()
         { }
 
-        void CreateNewAccountForBrandNewUser()
+        public void CreateNewAccountForBrandNewUser()
         { }
 
-        void UpdateAccount()
+        public void UpdateAccount()
         { }
 
-        void DeactivateAccount()
+        public void DeactivateAccount()
         { }
-
-
-
 
 
     }
