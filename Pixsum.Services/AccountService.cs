@@ -38,11 +38,17 @@ namespace Pixsum.Services
         public void GetUsersOnAccount()
         { }
 
-        public void CreateNewAccountForBrandNewUser()
-        { }
+        public Account CreateNewAccountForBrandNewUser(Account account)
+        {
+            _logic.Add(account);
+            return account;
+        }
 
-        public void UpdateAccount()
-        { }
+        public Account UpdateAccount(Account account)
+        {
+            _logic.Update(account);
+            return account;
+        }
 
         public void DeactivateAccount()
         { }

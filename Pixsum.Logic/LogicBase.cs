@@ -63,6 +63,8 @@ namespace Pixsum.Logic
         {
             //passthrough to repo
             _repo.Update(entityToUpdate);
+            //call unit of work to commit changes
+            _uow.Save();
         }
 
 

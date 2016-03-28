@@ -57,6 +57,7 @@ namespace Pixsum.API
             builder.Register(c => new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<DomainToAPIModelMappingProfile>();
+                cfg.AddProfile<APIModelToDomainMappingProfile>();
             })).AsSelf().SingleInstance();
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
             builder.RegisterType<MappingEngine>().As<IMappingEngine>();

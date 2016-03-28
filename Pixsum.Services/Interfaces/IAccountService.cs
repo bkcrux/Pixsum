@@ -8,8 +8,8 @@ namespace Pixsum.Services.Interfaces
         Account GetAccount(object id);
         ICollection<Account> GetAccountsForUser();
         void GetUsersOnAccount();
-        void CreateNewAccountForBrandNewUser();
-        void UpdateAccount();
+        Account CreateNewAccountForBrandNewUser(Account account);
+        Account UpdateAccount(Account account);
         void DeactivateAccount();
     }
 }

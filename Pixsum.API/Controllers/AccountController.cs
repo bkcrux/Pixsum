@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using Pixsum.API.Models;
 using Pixsum.Data;
 using Pixsum.Entities;
@@ -40,13 +41,18 @@ namespace Pixsum.API.Controllers
         }
 
         // POST api/account
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody] AccountModel model)
         {
+            return Ok(accountService.CreateNewAccountForBrandNewUser(
+                mapper.Map<AccountModel, Account>(model)));
         }
 
         // PUT api/account/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, [FromBody]AccountModel model)
         {
+            return Ok(accountService.UpdateAccount(
+                mapper.Map<AccountModel, Account>(model)));
+
         }
 
         // DELETE api/account/5
