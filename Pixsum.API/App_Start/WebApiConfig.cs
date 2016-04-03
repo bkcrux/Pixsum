@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Pixsum.API.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;

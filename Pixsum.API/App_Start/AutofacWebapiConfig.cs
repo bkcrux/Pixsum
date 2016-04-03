@@ -2,8 +2,8 @@
 using Autofac.Core;
 using Autofac.Integration.WebApi;
 using AutoMapper;
-using Pixsum.API.Mappings;
-using Pixsum.API.Models;
+using Pixsum.Services.Mappings;
+using Pixsum.Models;
 using Pixsum.Data;
 using Pixsum.Data.Interfaces;
 using Pixsum.Entities;
@@ -56,8 +56,9 @@ namespace Pixsum.API
             //Automapper
             builder.Register(c => new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile<DomainToAPIModelMappingProfile>();
-                cfg.AddProfile<APIModelToDomainMappingProfile>();
+                cfg.AddProfile<DomainToModelMappingProfile>();
+                cfg.AddProfile<ModelToDomainMappingProfile>();
+                cfg.AddProfile<ModelToModelMappingProfile>();
             })).AsSelf().SingleInstance();
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().InstancePerLifetimeScope();
             builder.RegisterType<MappingEngine>().As<IMappingEngine>();

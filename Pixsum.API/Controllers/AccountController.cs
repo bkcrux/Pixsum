@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
-using Pixsum.API.Models;
+using Pixsum.Models;
 using Pixsum.Data;
 using Pixsum.Entities;
 using Pixsum.Logic;
@@ -36,23 +36,19 @@ namespace Pixsum.API.Controllers
         // GET api/account/5
         public IHttpActionResult Get(int id)
         {
-            var acct = accountService.GetAccount(id);
-            return Ok(mapper.Map<Account, AccountModel>(acct));
+            return Ok(accountService.GetAccount(id));
         }
 
         // POST api/account
         public IHttpActionResult Post([FromBody] AccountModel model)
         {
-            return Ok(accountService.CreateNewAccountForBrandNewUser(
-                mapper.Map<AccountModel, Account>(model)));
+            return Ok(accountService.CreateNewAccountForBrandNewUser(model));
         }
 
         // PUT api/account/5
         public IHttpActionResult Put(int id, [FromBody]AccountModel model)
         {
-            return Ok(accountService.UpdateAccount(
-                mapper.Map<AccountModel, Account>(model)));
-
+            return Ok(accountService.UpdateAccount(id, model));
         }
 
         // DELETE api/account/5

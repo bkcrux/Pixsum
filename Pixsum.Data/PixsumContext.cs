@@ -1,4 +1,5 @@
 ﻿using Pixsum.Entities;
+using Pixsum.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -43,19 +44,20 @@ namespace Pixsum.Data
         public override int SaveChanges()
         {
             DateTime saveTime = DateTime.UtcNow;
-            foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Added))
-            {
-                if (entry.Property("CreatedDate").CurrentValue == null)
-                    entry.Property("CreatedDate").CurrentValue = saveTime;
 
-                if (entry.Property("UpdatedDate").CurrentValue == null)
-                    entry.Property("UpdatedDate").CurrentValue = saveTime;
-            }
-
-            foreach (var entry in this.ChangeTracker.Entries().Where(e => e.State == EntityState.Modified))
+            var changeSet = ChangeTracker.Entries<IEntityAuditable>();
             {
-                if (entry.Property("UpdatedDate").CurrentValue == null)
-                    entry.Property("UpdatedDate").CurrentValue = saveTime;
+                foreach (var entry in changeSet.Where(e => e.State == EntityState.Added))
+                {
+                    entry.Entity.CreatedDate = saveTime;
+                }
+
+                foreach (var entry in changeSet.Where(c => c.State != EntityState.Unchanged))
+                {
+                    entry.Entity.UpdatedDate = saveTime;
+                    //TODO inject username in constructor
+                    //entry.Entity.ModifiedBy = HttpContext.Current.User.Identity.Name;
+                }
             }
 
             return base.SaveChanges();

@@ -126,9 +126,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\APIModelToDomainMappingProfile.cs" />
-    <Compile Include="Mappings\DomainToAPIModelMappingProfile.cs" />
-    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +148,10 @@
     <ProjectReference Include="..\Pixsum.Logic\Pixsum.Logic.csproj">
       <Project>{646df5dd-f36d-4506-9629-5e38d411c7ab}</Project>
       <Name>Pixsum.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pixsum.Models\Pixsum.Models.csproj">
+      <Project>{aefa1f6a-ec93-4e95-946d-dba12b2de948}</Project>
+      <Name>Pixsum.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pixsum.Services\Pixsum.Services.csproj">
       <Project>{10014906-5dfc-4359-bb0f-c0f93ffa0e1b}</Project>

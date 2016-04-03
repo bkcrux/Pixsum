@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Pixsum.API.Models
+namespace Pixsum.Models
 {
     public class AccountModel
     {

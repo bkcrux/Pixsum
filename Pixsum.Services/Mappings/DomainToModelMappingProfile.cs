@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using Pixsum.API.Models;
 using Pixsum.Entities;
+using Pixsum.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Pixsum.API.Mappings
+namespace Pixsum.Services.Mappings
 {
-    public class DomainToAPIModelMappingProfile : Profile
+    public class DomainToModelMappingProfile : Profile
     {
         public override string ProfileName
         {
             get
             {
-                return "DomainToAPIModelMappingProfile";
+                return "DomainToModelMappingProfile";
             }
         }
 

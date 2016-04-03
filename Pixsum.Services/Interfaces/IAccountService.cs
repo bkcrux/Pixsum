@@ -1,15 +1,16 @@
 ﻿using Pixsum.Entities;
+using Pixsum.Models;
 using System.Collections.Generic;
 
 namespace Pixsum.Services.Interfaces
 {
     public interface IAccountService
     {
-        Account GetAccount(object id);
-        ICollection<Account> GetAccountsForUser();
+        AccountModel GetAccount(object id);
+        ICollection<AccountModel> GetAccountsForUser();
         void GetUsersOnAccount();
-        Account CreateNewAccountForBrandNewUser(Account account);
-        Account UpdateAccount(Account account);
+        AccountModel CreateNewAccountForBrandNewUser(AccountModel account);
+        AccountModel UpdateAccount(int id, AccountModel account);
         void DeactivateAccount();
     }
 }
