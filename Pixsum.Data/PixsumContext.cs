@@ -57,6 +57,10 @@ namespace Pixsum.Data
                     entry.Entity.UpdatedDate = saveTime;
                     //TODO inject username in constructor
                     //entry.Entity.ModifiedBy = HttpContext.Current.User.Identity.Name;
+                    
+                    //Ignore any changes to the createddate and createruser
+                    entry.Property(p => p.CreatedDate).IsModified = false;
+                    entry.Property(p => p.CreatedUserId).IsModified = false;
                 }
             }
 

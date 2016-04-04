@@ -60,12 +60,14 @@ namespace Pixsum.Logic
         }
 
 
-        public virtual void Update(TEntity entityToUpdate)
+        public virtual TEntity Update(TEntity entityToUpdate)
         {
             //passthrough to repo
             _repo.Update(entityToUpdate);
             //call unit of work to commit changes
             _uow.Save();
+            //Get updated object to return back through api
+            return GetByID(entityToUpdate.Id);
         }
 
 

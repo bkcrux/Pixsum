@@ -51,18 +51,10 @@ namespace Pixsum.Services
         public AccountModel UpdateAccount(int id, AccountModel account)
         {
             //TODO: Validate passed-in account object
+            var entity = mapper.Map<AccountModel, Account>(account);
 
-            //Get original object values from db
-            //TODO: Somehow this GET is causing the EF graph to load this specific object in memory, which
-            //then causes issues in the generic repo when we try to attach and set to modified
-            //Need to figure out a better way to say only modified changes with EF
-            var objCurrent = GetAccount(id);
-            //Copy any fields from the model (dto) to the existing obj
-            mapper.Map<AccountModel, AccountModel>(account, objCurrent);
-            //Convert to entity
-            var entity = mapper.Map<AccountModel, Account>(objCurrent);
             //Save changes
-            _logic.Update(entity);
+            entity = _logic.Update(entity);
 
             //Return model (dto)
             return mapper.Map<Account, AccountModel>(entity);

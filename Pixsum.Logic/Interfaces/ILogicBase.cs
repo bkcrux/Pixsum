@@ -13,6 +13,6 @@ namespace Pixsum.Logic.Interfaces
         void Delete(object id);
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
         TEntity GetByID(object id);
-        void Update(TEntity entityToUpdate);
+        TEntity Update(TEntity entityToUpdate);
     }
 }
