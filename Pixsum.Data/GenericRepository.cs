@@ -61,7 +61,11 @@ namespace Pixsum.Data
 
         public virtual TEntity GetByID(object id)
         {
-            return DbContext.Set<TEntity>().Find(id);
+            //Find the object, but detach from EF object graph incase we do any
+            //updates from a DTO to object.  That way we don't get errors on the Update - Attach
+            var o = DbContext.Set<TEntity>().Find(id);
+            DbContext.Entry(o).State = EntityState.Detached;
+            return o;
         }
 
         public virtual void Add(TEntity entity)

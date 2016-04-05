@@ -44,14 +44,19 @@ namespace Pixsum.Services
 
         public AccountModel CreateNewAccountForBrandNewUser(AccountModel account)
         {
-            _logic.Add(mapper.Map<AccountModel, Account>(account));
-            return account;
+            var o = _logic.Add(mapper.Map<AccountModel, Account>(account));
+            return mapper.Map<Account, AccountModel>(o);
         }
 
         public AccountModel UpdateAccount(int id, AccountModel account)
         {
             //TODO: Validate passed-in account object
-            var entity = mapper.Map<AccountModel, Account>(account);
+            var objFromDb = GetAccount(id);
+            //Copy the values that should be updated over the obj from the db
+            objFromDb = mapper.Map<AccountModel, AccountModel>(account, objFromDb);
+
+            //covert to db entity
+            var entity = mapper.Map<AccountModel, Account>(objFromDb);
 
             //Save changes
             entity = _logic.Update(entity);

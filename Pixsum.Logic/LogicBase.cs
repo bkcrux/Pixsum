@@ -42,7 +42,7 @@ namespace Pixsum.Logic
         }
 
 
-        public virtual void Add(TEntity entity)
+        public virtual TEntity Add(TEntity entity)
         {
             //check security
 
@@ -57,6 +57,7 @@ namespace Pixsum.Logic
 
             //run after processors
 
+            return entity;
         }
 
 
@@ -66,8 +67,8 @@ namespace Pixsum.Logic
             _repo.Update(entityToUpdate);
             //call unit of work to commit changes
             _uow.Save();
-            //Get updated object to return back through api
-            return GetByID(entityToUpdate.Id);
+            //Return updated object to through api 
+            return entityToUpdate;
         }
 
 

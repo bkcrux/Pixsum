@@ -23,8 +23,8 @@ namespace Pixsum.Services.Mappings
             //Ignore mapping null values and create date / update date
 
             CreateMap<AccountModel, Account>().ForAllMembers(opt => opt.Condition(srs => !srs.IsSourceValueNull));
-            CreateMap<AccountModel, Account>().ForMember(opt => opt.CreatedDate, x => x.Ignore());
-            CreateMap<AccountModel, Account>().ForMember(opt => opt.UpdatedDate, x => x.Ignore());
+            //CreateMap<AccountModel, Account>().ForMember(opt => opt.CreatedDate, x => x.Ignore());
+            //CreateMap<AccountModel, Account>().ForMember(opt => opt.UpdatedDate, x => x.Ignore());
 
             //TODO : Finish adding the rest of the models
         }
