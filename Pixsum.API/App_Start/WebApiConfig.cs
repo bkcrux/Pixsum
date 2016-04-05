@@ -10,12 +10,13 @@ namespace Pixsum.API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            json.UseDataContractJsonSerializer = true;
-
             // Remove the XML formatter
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            // Web API configuration and services
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
+            json.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
 
             // Web API routes
             config.MapHttpAttributeRoutes();
