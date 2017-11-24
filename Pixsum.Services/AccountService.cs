@@ -34,6 +34,12 @@ namespace Pixsum.Services
             return mapper.Map<Account, AccountModel>(_logic.GetByID(id));
         }
 
+        public ICollection<AccountModel> GetAccounts()
+        {
+            return mapper.Map<IEnumerable<Account>, ICollection<AccountModel>>(_logic.GetAccounts());
+        }
+
+
         public ICollection<AccountModel> GetAccountsForUser()
         {
             return null;

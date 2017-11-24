@@ -8,6 +8,7 @@ namespace Pixsum.Services.Interfaces
     {
         AccountModel GetAccount(object id);
         ICollection<AccountModel> GetAccountsForUser();
+        ICollection<AccountModel> GetAccounts();
         void GetUsersOnAccount();
         AccountModel CreateNewAccountForBrandNewUser(AccountModel account);
         AccountModel UpdateAccount(int id, AccountModel account);

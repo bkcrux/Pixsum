@@ -28,9 +28,11 @@ namespace Pixsum.API.Controllers
 
 
         // GET api/account
-        public IEnumerable<string> Get()
+        public IEnumerable<AccountModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            //return new string[] { "value1", "value2" };
+            return accountService.GetAccounts();
+
         }
 
         // GET api/account/5

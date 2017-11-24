@@ -27,9 +27,9 @@ namespace Pixsum.Logic
         }
 
         #region Special Methods
-        public virtual IEnumerable<Account> GetAccountsWithAnX()
+        public virtual IEnumerable<Account> GetAccounts()
         {
-            return _accountRepo.Get(filter: q => q.AccountName.Contains("X"), orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
+            return _accountRepo.Get(orderBy: o => o.OrderByDescending(f => f.UpdatedDate));
         }
         #endregion
 

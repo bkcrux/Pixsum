@@ -52,5 +52,22 @@ namespace UnitTest.RepositoryTests
 
         }
 
+        [TestMethod]
+        public void Study()
+        {
+            Func<string, string> convertMethod = UppercaseString;
+            Func<string, string> c = s => s.ToUpper();
+
+
+            string name = "Dakota";
+            // Use delegate instance to call UppercaseString method
+            System.Diagnostics.Debug.WriteLine(c(name));
+
+        }
+
+        private static string UppercaseString(string inputString)
+        {
+            return inputString.ToUpper();
+        }
     }
 }

@@ -5,6 +5,6 @@ namespace Pixsum.Logic.Interfaces
 {
     public interface IAccountLogic<TEntity> : ILogicBase<Account>
     {
-        IEnumerable<Account> GetAccountsWithAnX();
+        IEnumerable<Account> GetAccounts();
     }
 }
